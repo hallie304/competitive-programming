@@ -1,26 +1,20 @@
-
 #include <iostream>
 #include <vector>
 using namespace std;
- 
+int t, n, a[200005], l, r, L, R;
 int main() {
-    int t;
     cin >> t;
  
     while (t--) {
-        int n;
         cin >> n;
  
-        vector<int> a(n + 1);
         for (int i = 1; i <= n; i++) {
             cin >> a[i];
         }
  
-        int l = 1, r = n, L = 1, R = n;
-        bool foundRange = false;
+        int l = L = 1, r = R = n;
  
-        while (l < r && !foundRange) {
-            foundRange = true;
+        while ((a[l] == L || a[l] == R || a[r] == L || a[r] == R) && l <= r) {
  
             if (a[l] == L) {
                 l++, L++;
@@ -30,17 +24,14 @@ int main() {
                 r--, L++;
             } else if (a[r] == R) {
                 r--, R--;
-            } else {
-                foundRange = false;
             }
         }
  
-        if (foundRange) {
-            cout << l << " " << r << endl;
-        } else {
+        if (l >= r) {
             cout << -1 << endl;
+        } else {
+            cout << l << " " << r << endl;
         }
     }
- 
-    return 0;
 }
+ 
