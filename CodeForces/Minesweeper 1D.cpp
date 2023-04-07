@@ -7,11 +7,12 @@ int dp[N][3];
 signed main(){
     string s; cin >> s;
     dp[0][0] = dp[0][1] = 1;
-    s = " " + s;
     int n = s.size();
+
+    s = " " + s;
     for (int i = 1; i <= n; i++){
         if (s[i] == '0') dp[i][0] = dp[i-1][0]; // can only extend the prefix if the (i-1)th cell was a type-0 cell
-        if (s[i] == '1') { // can either extend the prefix with a type-1 cell (if the cell to the left contains a bomb), or with a type-2 cell (if the cell to the left does not contain a bomb)
+        if (s[i] == '1') { 
             dp[i][1] = dp[i-1][0]; // the cell to the left contains a bomb
             dp[i][0] = dp[i-1][2]; // the cell to the left does not contain a bomb
         }
