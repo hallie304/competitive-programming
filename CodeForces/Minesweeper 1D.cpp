@@ -24,5 +24,5 @@ signed main(){
             dp[i][2] = (dp[i-1][1] + dp[i-1][2])%MOD;
         }
     }
-    cout << (dp[n][0] + dp[n][1]) % MOD;
+    cout << (dp[n][0] + dp[n][2]) % MOD;
 }
