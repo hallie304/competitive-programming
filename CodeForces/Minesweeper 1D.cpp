@@ -11,13 +11,17 @@ signed main(){
 
     s = " " + s;
     for (int i = 1; i <= n; i++){
-        if (s[i] == '0') dp[i][0] = dp[i-1][0]; // can only extend the prefix if the (i-1)th cell was a type-0 cell
+        if (s[i] == '0') dp[i][0] = dp[i-1][0]; 
+        
         if (s[i] == '1') { 
-            dp[i][1] = dp[i-1][0]; // the cell to the left contains a bomb
-            dp[i][0] = dp[i-1][2]; // the cell to the left does not contain a bomb
+            dp[i][1] = dp[i-1][0]; 
+            dp[i][0] = dp[i-1][2]; 
         }
-        if(s[i] == '2') dp[i][1] = dp[i-1][2]; // can only extend the prefix if the last cell was a type-2 cell.
-        if(s[i] == '*') dp[i][2] = (dp[i-1][1] + dp[i-1][2]) % MOD; // can fill the i-th cell with a bomb if wither thr (i-1)th cell contain '1' 
+        
+        if(s[i] == '2') dp[i][1] = dp[i-1][2]; 
+        
+        if(s[i] == '*') dp[i][2] = (dp[i-1][1] + dp[i-1][2]) % MOD; 
+        
         if(s[i] == '?') {
             dp[i][0] = (dp[i-1][0] + dp[i-1][2])%MOD;
             dp[i][1] = (dp[i-1][0] + dp[i-1][2])%MOD;
