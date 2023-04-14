@@ -1,5 +1,3 @@
-
-
 #include <bits/stdc++.h>
 #define int long long
 using namespace std;
@@ -31,4 +29,5 @@ signed main(){
         }
     }
     cout<<(dp[n-1][0]+dp[n-1][2]+dp[n-1][3])%MOD;
+    return 0;
 }
